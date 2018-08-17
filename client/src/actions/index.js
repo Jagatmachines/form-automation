@@ -1,6 +1,40 @@
 import axios from '../axios';
+import { showSuccess, showError } from '../utilities/alertnotification';
 
-const youtubeApiKey = 'AIzaSyDm6WbSwEJ--G-SsASkiL_fLNaD6qmNKrc'
+const youtubeApiKey = ''
+
+export const timeChart = async (value) => {
+    return axios.request({
+        method: 'post',
+        url: '/api/timeChart',
+        'noRetry': true,
+        data: value
+    }).then((response) => {
+        // callBack(response.data)
+        showSuccess('Time Chart Save Successfully');
+        return Promise.resolve(response.data);
+    }).catch((err) => {
+        showError(`Error occured ${err}`);
+        return Promise.reject(err);
+    });
+};
+
+export const entryList = async () => {
+    return axios.request({
+        method: 'get',
+        url: '/api/entryList',
+        'noRetry': true
+    }).then((response) => {
+        // callBack(response.data)
+        return Promise.resolve(response.data);
+    }).catch((err) => {
+        showError(`Error occured ${err}`);
+        return Promise.reject(err);
+    });
+};
+
+
+
 
 export const fetch1stContent = async (callBack) => {
     return axios.request({

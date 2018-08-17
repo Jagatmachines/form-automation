@@ -1,3 +1,5 @@
+'use strict'
+
 import bodyParser from 'body-parser'
 import express from 'express';
 import path from 'path';
@@ -21,7 +23,49 @@ app.use(staticFiles);
 
 const router = express.Router();
 
+app.use(router);
 
+app.use('/app/*', staticFiles)
+
+app.listen(port, () => console.log(`Listening on port ${port}`));
+
+var serviceAccount = require('./prashanna-rastriya.json');
+
+firebase.initializeApp({
+  credential: firebase.credential.cert(serviceAccount),
+  databaseURL: "https://prashanna-rastriya.firebaseio.com"
+});
+
+const userRef = firebase.database().ref(`/Prashanna`)
+
+router.post('/api/timeChart', (req, res) => {
+    const value = req.body;
+
+    const newKey = userRef.push().key;
+
+    userRef.child(newKey).set(value).then(() => {
+        userRef.once('child_added')
+        .then((snap)=>{
+            let resData = snap.val();
+            resData.id = newKey;
+            res.status(200).send(resData);
+        })
+        .catch((err) => {
+            res.status(400).send(err);
+        })
+    })
+})
+
+router.get('/api/entryList', (req, res) => {
+    userRef.once('value')
+    .then((snap) => {
+        res.status(200).send(snap.val());
+    })
+    .catch((err) => {
+        console.log(err);
+        res.status(400).send(err);
+    })
+})
 
 
 
@@ -196,12 +240,6 @@ router.get('/', (req, res) => {
 
 
 
-var serviceAccount = require('./tgif-music-firebase.json');
-
-firebase.initializeApp({
-  credential: firebase.credential.cert(serviceAccount),
-  databaseURL: "https://tgif-music.firebaseio.com"
-});
 
 
 const appStartDefine = (videoID, callBack) => {
@@ -344,8 +382,3 @@ app.get('/deteteVideo', (req, res) => {
 
 
 
-app.use(router);
-
-app.use('/app/*', staticFiles)
-
-app.listen(port, () => console.log(`Listening on port ${port}`));

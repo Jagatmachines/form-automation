@@ -5,9 +5,26 @@ import RouteComponent from './routes';
 
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      applicantId: ''
+    }
+  }
+
+  setApplicantId = (applicantId) => {
+    this.setState({
+      applicantId
+    })
+  }
+
   render() {
     return (
-      <RouteComponent/>
+      <RouteComponent
+        applicantId={this.state.applicantId}
+        setApplicantId={this.setApplicantId}
+      />
     );
   }
 }

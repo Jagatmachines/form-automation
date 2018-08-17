@@ -20,7 +20,7 @@ class SideBar extends React.Component {
         const { items } = this.state;
 
         return (
-            <nav className="col-2 d-none d-md-block bg-light sidebar">
+            <nav className="col-3 d-none d-md-block bg-light sidebar">
                 <div className="sidebar-sticky">
                     {/* <ul className="nav flex-column">
                     <li className="nav-item">

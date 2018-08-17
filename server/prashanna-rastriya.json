@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "prashanna-rastriya",
+  "private_key_id": "51af7a1364e578d00be2f4ca783e8be2c82bf62d",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC3rMFSzw8Sfv2n\n2B8jafsYpgSP/qKL39NLDiJozcNUQrau0jabR1OgF3DrFSr+aHLycIL6ytMjXyx5\niREPFHK0/ErV1oTGImr2RIJeZaBHLQ4eW0+t9xyidHs/LUCoJis/BmSrpoRr025+\n61lq8RKog3Hjeqb8Ud2ir6p3U2p3zbOGs3XY5awxgWV4f/n49kMTE/qVoVLdaRFG\nHpvpEWQ3Z9TPvWJk7KGHM4BuYW7HkuCPHSprM8ydSi8i69JHp0XgQtr+y1CTnwfN\nAiGofiU9xd71peK7AU6Ix/c/nVydW+9Dbd/BxQvEr+Vn+eQBH8fUvTPtha64Y/ld\nKIEoeVnJAgMBAAECggEAAJCo3xn5OkW2/tBSxzN9JOYk2zMNubewcRmL6E3iwRR7\n9qV5qshhRNuxmp2L7nCwktefBYnAdMpHCyAtc+IMmMsyaT5B1hC2ysdq7cKrB7EH\nKzd9cyPwm/zXALqhSWslpKnevyrx2xmRTFVpxuMTOz69R9WBpELVt1mKQRf5+sCf\nSOPieHyJq7YtNZB2KLcH6MIK38iAXOd7R7ArXnYZDsoFcdhxAQvlwhoo5j026dow\nDSdwC+lYZ387JtDKOJlQRTNXGzm/MlpgrAfnzi5aES3QnXM6d+PoYTB9vM7f0/ba\nwUqkwIx9MWYn+/CDcGjA4XOFtatQG0wc7G8eFHXHsQKBgQD53aF4KcS3ZZ/zwIHW\na9kaNu/kg+E1g5cvfpDqst3sMAnIkYcvsK8lJ1oSfxDRZXjWld9+6QVq7D9RDMwB\n3/yYeNcui0srdyAMSDWfdJRLGvpA+OaQfmbkbgFeKBM5pkmJrP5Hdqo2mU+xTJe/\nbIzzlpEl6f9XDA1pQ830Wku8OQKBgQC8Lx/RF2QMwy/J+SoisTeqUX1Fvr6AMEbG\nve+z5wvs+65gNhp0vjSHU2pUgsVkAQBKnGi+ROXEc3McPeBIh//piY/JkgAqEC5T\nZtznqufKiw8sA5yqziOsex5Mh+xdQhGkaQPGZIJ7KfrvlMzKsJRdlb6oWslxuHBP\nmlVLehSqEQKBgCBH/Pt8UfjrvT2NqnicWGElpdqdGzSBur+dF3XrA/bmwezSuGd1\n6Trgmad4GSEkffcjR8uqqVOGECwVfinj2UuNmSdfQafs7QwJLDxcoGgPpTNNtOQI\nIJz0hWK3xLwW+rs5yWRMNXN2XTBn19cYXCGAW2JNl/qUCQuHgg1GuTApAoGAXEAB\nqd98lWENyUYS6MTVU/H0pj8WZgLEf2LW4esuhnLujY2YNIiVeY1jv6AHobl36ht4\noWVm+YHa+QpAK243/sUHrrmayQP7obj4K701Oa4nttzibTz2cfQ86ylqrmDYAy/T\nwOq+qB/xOodISUh8ws/IkgFHZS8UJ4GxtHlZLfECgYB/vjVJ+rr/QwCkJ/b9az9v\nC2Mopxm7/PO3fxnN2G/LmMy6B17/ki8h07XC7NAp9AO6pwzg0NPKFJi/OXVkbKm5\nlHCk+P7RAaZuV3QmSlXAJGr8B42Gc0ZVYV9VfwiQAi3Z4Dmww4GXjUf51dRmDRcw\nlH5bXi5g144Gg0kblPFG2w==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-xyyvo@prashanna-rastriya.iam.gserviceaccount.com",
+  "client_id": "110689394662674002259",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-xyyvo%40prashanna-rastriya.iam.gserviceaccount.com"
+}
