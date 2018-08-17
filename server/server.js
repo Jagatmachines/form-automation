@@ -31,6 +31,7 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 
 var serviceAccount = require('./prashanna-rastriya.json');
 
+// Firebase config
 firebase.initializeApp({
   credential: firebase.credential.cert(serviceAccount),
   databaseURL: "https://prashanna-rastriya.firebaseio.com"
