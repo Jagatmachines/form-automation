@@ -19,6 +19,22 @@ export const timeChart = async (value) => {
     });
 };
 
+export const borrowerProfile1 = async (value, applicationId) => {
+    return axios.request({
+        method: 'put',
+        url: `/api/borrowerProfile1/${applicationId}`,
+        'noRetry': true,
+        data: value
+    }).then((response) => {
+        // callBack(response.data)
+        showSuccess('Borrower Profile Save Successfully');
+        return Promise.resolve(response.data);
+    }).catch((err) => {
+        showError(`Error occured ${err}`);
+        return Promise.reject(err);
+    });
+};
+
 export const entryList = async () => {
     return axios.request({
         method: 'get',

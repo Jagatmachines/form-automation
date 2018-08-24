@@ -25,6 +25,16 @@ class TimeChart extends React.Component {
     }
 
     render() {
+        const intialValue = {
+            receiptBranch: '2008-08-08',
+            dispatchBranch: '2008-08-08',
+            refno: 20,
+            receiptCentral: '2008-08-08',
+            documentComplete: '2008-08-08',
+            recommendApprove: '2008-08-08',
+            doapproval: '2008-08-08'
+        }
+
         return (
             <div>
                 <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -33,6 +43,7 @@ class TimeChart extends React.Component {
 
                 <Form
                     onSubmit={this.onSubmit}
+                    initialValues={intialValue}
                     validate={(values) => {
                         const errors = {};
 
