@@ -2,9 +2,21 @@ import * as React from 'react';
 import { Form, Field } from 'react-final-form';
 import { timeChart } from '../../actions';
 import { withRouter } from 'react-router-dom';
+/* import PdfDropzone from '../dropzone';
+import Tesseract from '../tessaract'; */
 class TimeChart extends React.Component {
     constructor(props) {
-      super(props);  
+      super(props);
+
+      this.state = {
+          croppedImage: ''
+      }
+    }
+
+    imageDetails = (image) => {
+        this.setState({
+            croppedImage: image
+        })
     }
 
     onSubmit = async (valueData) => {
@@ -13,18 +25,17 @@ class TimeChart extends React.Component {
         await timeChart(valueData)
         .then((res) => {
             responseData = res;
-            console.log(res)
+            console.log(res);
+            this.props.setApplicantId(responseData.id);
+            this.props.history.push('/borrowerProfile');
         }).catch((err) => {
             console.log(err)
         })
-
-        if (responseData) {
-            this.props.setApplicantId(responseData.id);
-            this.props.history.push('/borrowerProfile');
-        }
     }
 
     render() {
+        // const { croppedImage } = this.state;
+
         const intialValue = {
             receiptBranch: '2008-08-08',
             dispatchBranch: '2008-08-08',
@@ -40,6 +51,12 @@ class TimeChart extends React.Component {
                 <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 className="h2">Time Chart</h1>
                 </div>
+
+                {/* <div className='col-6 float-right'>
+                    <PdfDropzone fileResponse={this.imageDetails}/>
+
+                    {croppedImage ? <Tesseract croppedImage={croppedImage}/> : ''}
+                </div> */}
 
                 <Form
                     onSubmit={this.onSubmit}
@@ -78,7 +95,7 @@ class TimeChart extends React.Component {
                         return errors;
                     }}
                     render={({ handleSubmit, reset, submitting , pristine, values, dirtySinceLastSubmit }) => (
-                        <form onSubmit={handleSubmit} className='col-7 offset-2'>
+                        <form onSubmit={handleSubmit} /* className='col-5' */>
                             <Field
                                 name="receiptBranch">
                                 {({ input, meta }) => (
@@ -193,6 +210,8 @@ class TimeChart extends React.Component {
                 >
 
                 </Form>
+
+                
             </div>  
         )
     }

@@ -57,8 +57,54 @@ router.post('/api/timeChart', (req, res) => {
     })
 })
 
+router.put('/api/initialProfile', (req, res) => {
+    const value = req.body;
+
+    userRef.child(req.query.applicationId).update(value).then(() => {
+        userRef.once('value')
+        .then((snap)=>{
+            let resData = snap.val();
+            res.status(200).send(resData);
+        })
+        .catch((err) => {
+            res.status(400).send(err);
+        })
+    })
+})
+
+router.put('/api/facilitiesForm', (req, res) => {
+    const facilityRef = firebase.database().ref(`/Prashanna/${req.query.applicationId}/facilities`)
+    const newKey = userRef.push().key;
+
+    const value = req.body;
+
+    facilityRef.child(newKey).set(value).then(() => {
+        userRef.once('value')
+        .then((snap)=>{
+            let resData = snap.val();
+            res.status(200).send(resData);
+        })
+        .catch((err) => {
+            res.status(400).send(err);
+        })
+    })
+})
+
 router.get('/api/entryList', (req, res) => {
     userRef.once('value')
+    .then((snap) => {
+        res.status(200).send(snap.val());
+    })
+    .catch((err) => {
+        console.log(err);
+        res.status(400).send(err);
+    })
+})
+
+router.get('/api/facilitiesForm', (req, res) => {
+    const facilityRef = firebase.database().ref(`/Prashanna/${req.query.applicationId}/facilities`)
+
+    facilityRef.once('value')
     .then((snap) => {
         res.status(200).send(snap.val());
     })

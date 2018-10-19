@@ -36,7 +36,7 @@ const RouteComponent =  (props) => {
                                 <Route path="/" exact render={() => <DashBoard items={items}/>} />
                                 <Route path="/timeChart" exact render={() => <TimeChart applicantId={props.applicantId} setApplicantId={props.setApplicantId} />} />
                                 <Route path="/borrowerProfile" exact render={() => <Borrower applicantId={props.applicantId}/>} />
-                                <Route path="/borrowerProfile2" exact component={BorrowerProfile2} />
+                                <Route path="/borrowerProfile2" exact component={() => <BorrowerProfile2 applicantId={props.applicantId}/>} />
                                 <Route path="/entryList" exact component={EntryList} />
                             </Switch>
                         </main>

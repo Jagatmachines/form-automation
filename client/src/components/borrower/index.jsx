@@ -1,31 +1,44 @@
 import * as React from 'react';
 import { Form, Field } from 'react-final-form';
+import { Modal, ModalHeader, ModalBody } from 'reactstrap';
+import PdfDropzone from '../dropzone';
+import { borrowerProfile1 } from '../../actions';
+import { withRouter } from 'react-router-dom';
 
 class Borrower extends React.Component {
     constructor(props) {
         super(props);
+
+        this.state ={
+            scanModal: false,
+            croppedImage: ''
+        }
     }
 
     onSubmit = async (valueData) => {
-        console.log(valueData);
-        debugger;
-        /* let responseData = ''
-
-        await timeChart(valueData)
+        await borrowerProfile1(valueData, this.props.applicantId)
         .then((res) => {
-            responseData = res;
-            console.log(res)
+            this.props.history.push('/borrowerProfile2');
         }).catch((err) => {
             console.log(err)
         })
+    }
 
-        if (responseData) {
-            this.props.setApplicantId(responseData.id);
-            this.props.history.push('/borrowerProfile');
-        } */
+    modalToggle = () => {
+        this.setState({
+            scanModal: !this.state.scanModal
+        })
+    }
+
+    imageDetails = (image) => {
+        this.setState({
+            croppedImage: image
+        })
     }
 
     render() {
+        const { scanModal, croppedImage } = this.state;
+
         const initialValue = {
             branchOffice: 'Kathmandu',
             fullName: 'Prashanna Tuladhar',
@@ -68,6 +81,7 @@ class Borrower extends React.Component {
             <div>
                 <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 className="h2">Borrower Profile Part 1</h1>
+                    <button className='btn' onClick={this.modalToggle}>Scan Doc</button>
                 </div>
 
                 <Form
@@ -408,10 +422,22 @@ class Borrower extends React.Component {
 
                 </Form>
 
+                <Modal className='helloworld' isOpen={scanModal} toggle={this.modalToggle} backdrop='static' >
+                    <ModalHeader toggle={this.modalToggle}>Scan Doc</ModalHeader>
+                    <ModalBody>
+                    <PdfDropzone fileResponse={this.imageDetails}/>
+                        
+                    </ModalBody>
+                    {/* <ModalFooter>
+                        <Button color="primary" onClick={this.toggle}>Do Something</Button>{' '}
+                        <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+                    </ModalFooter> */}
+                </Modal>
+
                 
             </div>
         )
     }
 }
 
-export default Borrower;
+export default withRouter(Borrower);

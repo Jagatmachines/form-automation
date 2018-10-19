@@ -22,7 +22,7 @@ export const timeChart = async (value) => {
 export const borrowerProfile1 = async (value, applicationId) => {
     return axios.request({
         method: 'put',
-        url: `/api/borrowerProfile1/${applicationId}`,
+        url: `/api/initialProfile?applicationId=${applicationId}`,
         'noRetry': true,
         data: value
     }).then((response) => {
@@ -31,6 +31,51 @@ export const borrowerProfile1 = async (value, applicationId) => {
         return Promise.resolve(response.data);
     }).catch((err) => {
         showError(`Error occured ${err}`);
+        return Promise.reject(err);
+    });
+};
+
+export const totalFundCollection = async (value, applicationId) => {
+    return axios.request({
+        method: 'put',
+        url: `/api/initialProfile?applicationId=${applicationId}`,
+        'noRetry': true,
+        data: value
+    }).then((response) => {
+        // callBack(response.data)
+        showSuccess('Total Fund Collection Save Successfully');
+        return Promise.resolve(response.data);
+    }).catch((err) => {
+        showError(`Error occured ${err}`);
+        return Promise.reject(err);
+    });
+};
+
+export const putFacilitiesForm   = async (value, applicationId) => {
+    return axios.request({
+        method: 'put',
+        url: `/api/facilitiesForm?applicationId=${applicationId}`,
+        'noRetry': true,
+        data: value
+    }).then((response) => {
+        // callBack(response.data)
+        showSuccess('Facilities Form Save Successfully');
+        return Promise.resolve(response.data);
+    }).catch((err) => {
+        showError(`Error occured ${err}`);
+        return Promise.reject(err);
+    });
+};
+
+export const getFacilitiesForm = async (applicationId) => {
+    return axios.request({
+        method: 'get',
+        url: `/api/facilitiesForm?applicationId=${applicationId}`,
+        'noRetry': true
+    }).then((response) => {
+        // callBack(response.data)
+        return Promise.resolve(response.data);
+    }).catch((err) => {
         return Promise.reject(err);
     });
 };
